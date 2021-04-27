@@ -1,8 +1,8 @@
-repos();
+(async () => {
+  console.log(await repos("JonnyRodriguez"));
+})();
 
-function repos() {
-  let url = "https://api.github.com/users/JonnyRodriguez/repos";
-  fetch(url)
-    .then((response) => response.json())
-    .then((json) => console.log(json));
+async function repos(user) {
+  let url = `https://api.github.com/users/${user}/repos`;
+  return await fetch(url).then((response) => response.json());
 }
